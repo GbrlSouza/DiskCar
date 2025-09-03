@@ -1,0 +1,58 @@
+{
+    "cars": [
+        {
+            "id": 1,
+            "brand": "Audi",
+            "model": "A4",
+            "type": "sedan",
+            "year": 2022,
+            "price": 350,
+            "image": "https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+        },
+        {
+            "id": 2,
+            "brand": "BMW",
+            "model": "X5",
+            "type": "suv",
+            "year": 2021,
+            "price": 450,
+            "image": "https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80"
+        },
+        {
+            "id": 3,
+            "brand": "Mercedes",
+            "model": "C180",
+            "type": "sedan",
+            "year": 2023,
+            "price": 380,
+            "image": "https://images.unsplash.com/photo-1616788494707-ec28f08d05a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+        },
+        {
+            "id": 4,
+            "brand": "Toyota",
+            "model": "Corolla",
+            "type": "sedan",
+            "year": 2022,
+            "price": 250,
+            "image": "https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80"
+        },
+        {
+            "id": 5,
+            "brand": "Honda",
+            "model": "Civic",
+            "type": "hatch",
+            "year": 2021,
+            "price": 220,
+            "image": "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80"
+        },
+        {
+            "id": 6,
+            "brand": "Ford",
+            "model": "Ranger",
+            "type": "pickup",
+            "year": 2023,
+            "price": 300,
+            "image": "https://images.unsplash.com/photo-1621336287340-7e5e36923479?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+        }
+    ]
+}
