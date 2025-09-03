@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiskCar - Aluguel de Veículos sem Burocracia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen">
+    <header class="bg-black py-6 border-b border-cyan-500">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i data-feather="car" class="text-cyan-400 w-8 h-8"></i>
+                <h1 class="futuristic-text text-2xl md:text-3xl font-bold text-cyan-400">DISKCAR</h1>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#" class="text-gray-300 hover:text-cyan-400 transition">Início</a>
+                <a href="#" class="text-gray-300 hover:text-cyan-400 transition">Veículos</a>
+                <a href="#" class="text-gray-300 hover:text-cyan-400 transition">Como Funciona</a>
+                <a href="#" class="text-gray-300 hover:text-cyan-400 transition">Contato</a>
+            </nav>
+            <button id="admin-btn" class="bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition">
+                <i data-feather="user" class="w-4 h-4"></i>
+                <span>Admin</span>
+            </button>
+        </div>
+    </header>
+
+    <section class="relative h-96 flex items-center justify-center bg-gradient-to-r from-black to-gray-900 overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-0 left-0 w-full h-full bg-repeat" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMwMDAwMDAiLz48cGF0aCBkPSJNMCAwIEwxMDAgMTAwIiBzdHJva2U9IiMwMGFhYWEiIHN0cm9rZS13aWR0aD0iMSIvPjxwYXRoIGQ9Ik0xMDAgMCBMMCAxMDAiIHN0cm9rZT0iIzAwYWFhYSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+')"></div>
+        </div>
+        <div class="container mx-auto px-4 z-10 text-center">
+            <h2 class="futuristic-text text-4xl md:text-6xl font-bold mb-6 text-cyan-400">Alugue sem Burocracia</h2>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Conectamos proprietários de veículos com pessoas que precisam alugar de forma rápida e segura.</p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <button class="btn-primary px-8 py-3 rounded-lg font-bold">Alugar um Carro</button>
+                <button class="bg-gray-800 hover:bg-gray-700 text-white px-8 py-3 rounded-lg font-bold border border-gray-600">Anunciar meu Carro</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-gray-800 p-6 rounded-xl shadow-lg">
+                <h3 class="futuristic-text text-2xl mb-6 text-center text-cyan-400">Encontre o carro perfeito</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <select class="search-input px-4 py-3 rounded-lg bg-gray-700 text-white">
+                        <option value="">Todas as Marcas</option>
+                        <option value="audi">Audi</option>
+                        <option value="bmw">BMW</option>
+                        <option value="mercedes">Mercedes</option>
+                        <option value="toyota">Toyota</option>
+                        <option value="honda">Honda</option>
+                    </select>
+                    <select class="search-input px-4 py-3 rounded-lg bg-gray-700 text-white">
+                        <option value="">Todos os Modelos</option>
+                        <option value="sedan">Sedan</option>
+                        <option value="hatch">Hatch</option>
+                        <option value="suv">SUV</option>
+                        <option value="pickup">Pickup</option>
+                    </select>
+                    <button class="btn-primary px-4 py-3 rounded-lg font-bold">Buscar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="futuristic-text text-3xl mb-12 text-center text-cyan-400">Veículos Disponíveis</h2>
+            <div id="cars-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                </div>
+        </div>
+    </section>
+
+    <div id="admin-modal" class="fixed inset-0 bg-black bg-opacity-70 z-50 hidden">
+        <div class="absolute right-0 h-full w-full md:w-1/2 lg:w-1/3 admin-panel overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-8">
+                    <h3 class="futuristic-text text-2xl text-cyan-400">Painel Administrativo</h3>
+                    <button id="close-admin" class="text-gray-400 hover:text-white">
+                        <i data-feather="x" class="w-6 h-6"></i>
+                    </button>
+                </div>
+
+                <form id="car-form" class="space-y-6">
+                    <div>
+                        <label class="block text-gray-300 mb-2">Marca</label>
+                        <input type="text" id="brand" class="w-full px-4 py-2 rounded bg-gray-700 text-white">
+                    </div>
+                    <div>
+                        <label class="block text-gray-300 mb-2">Modelo</label>
+                        <input type="text" id="model" class="w-full px-4 py-2 rounded bg-gray-700 text-white">
+                    </div>
+                    <div>
+                        <label class="block text-gray-300 mb-2">Tipo</label>
+                        <select id="type" class="w-full px-4 py-2 rounded bg-gray-700 text-white">
+                            <option value="sedan">Sedan</option>
+                            <option value="hatch">Hatch</option>
+                            <option value="suv">SUV</option>
+                            <option value="pickup">Pickup</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-300 mb-2">Ano</label>
+                        <input type="number" id="year" class="w-full px-4 py-2 rounded bg-gray-700 text-white">
+                    </div>
+                    <div>
+                        <label class="block text-gray-300 mb-2">Preço por Dia (R$)</label>
+                        <input type="number" id="price" class="w-full px-4 py-2 rounded bg-gray-700 text-white">
+                    </div>
+                    <div>
+                        <label class="block text-gray-300 mb-2">Imagem (URL)</label>
+                        <input type="text" id="image" class="w-full px-4 py-2 rounded bg-gray-700 text-white">
+                    </div>
+                    <div class="pt-4">
+                        <button type="submit" class="btn-primary w-full py-3 rounded-lg font-bold">Cadastrar Veículo</button>
+                    </div>
+                </form>
+
+                <div class="mt-12">
+                    <h4 class="futuristic-text text-xl mb-4 text-cyan-400">Veículos Cadastrados</h4>
+                    <div id="admin-cars-list" class="space-y-4">
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-black py-12 border-t border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="futuristic-text text-xl mb-4 text-cyan-400">DiskCar</h3>
+                    <p class="text-gray-400">A maneira mais fácil de alugar ou anunciar seu veículo sem burocracia.</p>
+                </div>
+                <div>
+                    <h4 class="futuristic-text text-lg mb-4 text-white">Links Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-400">Início</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-400">Veículos</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-400">Como Funciona</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-400">Contato</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="futuristic-text text-lg mb-4 text-white">Contato</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-400"><i data-feather="mail" class="w-4 h-4 mr-2"></i> contato@diskcar.com</li>
+                        <li class="flex items-center text-gray-400"><i data-feather="phone" class="w-4 h-4 mr-2"></i> (11) 98765-4321</li>
+                        <li class="flex items-center text-gray-400"><i data-feather="map-pin" class="w-4 h-4 mr-2"></i> São Paulo, Brasil</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="futuristic-text text-lg mb-4 text-white">Redes Sociais</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-cyan-400"><i data-feather="facebook" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-cyan-400"><i data-feather="instagram" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-cyan-400"><i data-feather="twitter" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-cyan-400"><i data-feather="linkedin" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
+                <p>© 2025 DiskCar. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
